@@ -4,8 +4,9 @@
 # Get Started
 
 Before starting the server, make sure that the MariaDB server is running.
-download mariadb from [maridb](https://mariadb.org/download/?t=mariadb&p=mariadb&r=11.6.2&os=windows&cpu=x86_64&pkg=msi&mirror=starburst_mumbai)
-1. Start the MariaDB server:
+download mariadb from [maridb download](https://mariadb.org/download/?t=mariadb&p=mariadb&r=11.6.2&os=windows&cpu=x86_64&pkg=msi&mirror=starburst_mumbai) .msi  file and install it with default setting.
+
+1. Start the MariaDB server (if in linux specially wsl):
     ```sh
     sudo service mariadb start
     ```
