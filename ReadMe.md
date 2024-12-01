@@ -1,0 +1,1 @@
+Befor Start the Server make sure that mariadb server is running.
