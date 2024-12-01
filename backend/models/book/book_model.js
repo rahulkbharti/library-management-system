@@ -10,7 +10,6 @@ class BookModel {
     async addBook(book_id, title, author, isbn, identifier, category_id) {
         try {
             const result = await this.query('INSERT INTO books (book_id, title, author, isbn, identifier, category_id) VALUES (?, ?, ?, ?, ?, ?)', [book_id, title, author, isbn, identifier, category_id]);
-            console.log(result);
             const [book] = await this.query('SELECT * FROM books WHERE book_id = ?', [result.insertId]);
             return book;
         } catch (error) {

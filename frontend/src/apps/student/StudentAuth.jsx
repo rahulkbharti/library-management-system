@@ -6,7 +6,7 @@ import axiosInstance from '../../axios/AxiosInstance';
 import { Link, useNavigate } from 'react-router-dom';
 
 // StudentLogin component using Formik and Yup
-function StudentLogin() {
+const StudentLogin = () => {
     const navigate = useNavigate();
     const initialValues = {
         username: '',
@@ -20,9 +20,7 @@ function StudentLogin() {
 
     const onSubmit = async (values) => {
         // Add authentication logic here (e.g., call an authentication API)
-        console.log('Student login logic goes here', values);
         let x = await axiosInstance.post("/auth/student/login", values);
-        console.log(x);
         navigate("/student/dashboard");
     };
 
@@ -73,7 +71,7 @@ function StudentLogin() {
 }
 
 // StudentRegister component using Formik and Yup
-function StudentRegister() {
+const StudentRegister = () => {
     const initialValues = {
         roll_number: '',
         full_name: '',
@@ -113,7 +111,7 @@ function StudentRegister() {
                             <Typography variant="h6">
                                 Register |{' '}
                             </Typography>
-                            
+
 
                             <Grid container spacing={2}>
                                 <Grid item xs={12} sm={6}>
@@ -243,12 +241,12 @@ function StudentRegister() {
                                     <ErrorMessage name="address" component="div" />
                                 </Grid>
                             </Grid>
-  
+
                             <div>
                                 Already a user <Link to="/login" component={Link}>
                                     Back to Login
-                                </Link> <br/>
-                                <br/>
+                                </Link> <br />
+                                <br />
                                 <Button type="submit" variant="contained" color="primary" size="small">
                                     Register
                                 </Button>

@@ -34,8 +34,6 @@ and Copy the Database file and Paste into the terminal , it will automatically c
    sudo service mariadb start
    ```
 
-````
-
 2. Clone the git repository:
    ```sh
    git clone <repository-url>
@@ -43,13 +41,15 @@ and Copy the Database file and Paste into the terminal , it will automatically c
    ```
 3. Edit .env.development/production
    File Accoring to your mariadb database
-   `env
-SECRET_KEY=production-secret-key
-DB_HOST=localhost
-DB_USER=rahul
-DB_PASSWORD=rahul123
-DB_DATABASE=Library_System
-`
+
+   ```sh
+   SECRET_KEY=production-secret-key
+   DB_HOST=localhost
+   DB_USER=rahul
+   DB_PASSWORD=rahul123
+   DB_DATABASE=Library_System
+   ```
+
 4. Set up the backend:
 
    ```sh
@@ -64,8 +64,3 @@ DB_DATABASE=Library_System
    npm install
    npm run dev
    ```
-
-```
-
-```
-````

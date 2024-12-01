@@ -20,7 +20,6 @@ class AdminModel {
   async getUserByUserName(username) {
     try {
       const [user] = await this.query('SELECT * FROM admins WHERE username = ?', [username]);
-      console.log(user);
       return user;
     } catch (error) {
       console.error('Error fetching admin user by ID:', error.message);

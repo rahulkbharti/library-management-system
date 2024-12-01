@@ -20,9 +20,7 @@ function LibrarianLogin() {
 
     const onSubmit = async (values) => {
         // Add authentication logic here (e.g., call an authentication API)
-        console.log('Librarian login logic goes here', values);
         let x = await axiosInstance.post("/auth/admin/login", values);
-        console.log(x);
         navigate("/librarian/dashboard");
     };
 

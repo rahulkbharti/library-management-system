@@ -82,7 +82,6 @@ router.delete('/deleteBook', async (req, res) => {
     }
 
     const book = await bookModel.getBook(book_id);
-    // console.log("Deleting", book);
     if (book.issued === 1) {
         return res.status(400).json({ error: 'Book is issued, cannot delete' });
     }

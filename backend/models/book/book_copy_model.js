@@ -10,7 +10,6 @@ class BookCopyModel {
   async addBookCopy(book_id, unique_identifier) {
     try {
       const result = await this.query('INSERT INTO book_copies (book_id, unique_identifier) VALUES (?, ?)', [book_id, unique_identifier]);
-      console.log(result);
       const [copy] = await this.query('SELECT * FROM book_copies WHERE copy_id = ?', [result.insertId]);
       return copy;
     } catch (error) {

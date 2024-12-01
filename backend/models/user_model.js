@@ -24,7 +24,6 @@ class UserModel {
   async getUserByUserName(username) {
     try {
       const [user] = await this.query('SELECT * FROM users WHERE username = ?', [username]);
-      console.log(user)
       return user;
     } catch (error) {
       console.error('Error fetching user by ID:', error.message);

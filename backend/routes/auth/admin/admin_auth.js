@@ -37,7 +37,6 @@ router.post('/login', async (req, res) => {
     const user = await adminModel.getUserByUserName(username);
 
     if (user) {
-        console.log(chalk.red(user.password));
         const passwordMatch = await bcrypt.compare(password, user.hashed_password);
         if (passwordMatch) {
             // Authentication successful
@@ -89,8 +88,7 @@ router.get('/getAllStudents', async (req, res) => {
     //  res.status(401).json({message:" Bad Credentials"});
 });
 router.get('/getStudent', async (req, res) => {
-    const { roll_number } = req.params;
-    console.log(req.params);
+    const { roll_number } = req.query;
     if (!roll_number) {
         return res.status(400).json({ message: 'roll_number is required' });
     }

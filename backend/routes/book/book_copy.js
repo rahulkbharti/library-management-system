@@ -18,35 +18,30 @@ const isAuthenticated = (req, res, next) => {
 
 router.get("/getAllBookCopies", async (req, res) => {
     const copies = await bookCopies.getAllBookCopy();
-    console.log("book Copies" + copies);
     res.send({ message: "Book Copies", copies });
 });
 
 router.post("/getBookCopy", async (req, res) => {
     const { copy_id } = req.body;
     const copy = await bookCopies.getBookCopy(copy_id);
-    console.log("book Copy" + copy);
     res.send({ message: "Book Copy", copy });
 });
 
 router.post("/addBookCopy", isAuthenticated, async (req, res) => {
     const { book_id, unique_identifier } = req.body;
     const copy = await bookCopies.addBookCopy(book_id, unique_identifier);
-    console.log("Added book copy" + copy);
     res.send({ message: "Added Book copy", copy });
 });
 
 router.put("/updateBookCopy", isAuthenticated, async (req, res) => {
     const { copy_id, unique_identifier } = req.body;
     const copy = await bookCopies.updateBookCopy(copy_id, unique_identifier);
-    console.log("Updated book copy" + copy);
     res.send({ message: "Updated Book copy", copy });
 });
 
 router.delete("/deleteBookCopy", async (req, res) => {
     const { copy_id } = req.body;
     const copy = await bookCopies.deleteBookCopy(copy_id);
-    console.log("Deleted book copy" + copy);
     res.send({ message: "Deleted Book copy", copy });
 });
 

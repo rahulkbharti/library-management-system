@@ -1,13 +1,14 @@
 import SearchBookByTitle from "./SearchBook";
 import StudentissueBook from "./StudentIssueBook";
 
-const StudentDashboard =()=>{
+const StudentDashboard = () => {
 
-    return(
+    return (
         <>
-         <SearchBookByTitle/>
-         <hr />
-         <StudentissueBook/>
+            <SearchBookByTitle />
+            <hr />
+
+            <StudentissueBook />
         </>
     )
 }

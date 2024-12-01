@@ -18,35 +18,35 @@ const isAuthenticated = (req, res, next) => {
 
 router.get("/getAllTransactions", async (req, res) => {
     const transactions = await transactionModel.getAllTransactions();
-    console.log("book transactions", transactions);
     res.send({ message: "Book transactions", list: transactions });
 });
 
 router.post("/getTransaction", async (req, res) => {
     const { transaction_id } = req.body;
     const copy = await transactionModel.getTransaction(transaction_id);
-    console.log("book Copy", copy);
     res.send({ message: "Book Copy", copy });
 });
 
-router.post("/addTransaction", isAuthenticated, async (req, res) => {
-    const { student_id, book_id, admin_id, issue_date, return_date, status } = req.body;
-    const transaction = await transactionModel.addTransaction(student_id, book_id, admin_id, issue_date, return_date, status);
-    console.log("Added book transaction", transaction);
-    res.send({ message: "Added Book transaction", transaction });
+router.post("/addTransaction", async (req, res) => {
+    try {
+        const { student_id, book_id, admin_id, issue_date, return_date, status } = req.body;
+        const transaction = await transactionModel.addTransaction(student_id, book_id, admin_id, issue_date, return_date, status);
+        res.json({ message: "Added Book transaction", transaction });
+    } catch (error) {
+        console.error("Error adding transaction:", error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
 });
 
 router.put("/updateTransaction", isAuthenticated, async (req, res) => {
     const { copy_id } = req.body;
     const copy = await transactionModel.updateTransaction(copy_id);
-    console.log("Updated book copy", copy);
     res.send({ message: "Updated Book copy", copy });
 });
 
 router.delete("/deleteTransaction", isAuthenticated, async (req, res) => {
     const { transaction_id } = req.body;
     const copy = await transactionModel.deleteTransaction(transaction_id);
-    console.log("Deleted book copy", copy);
     res.send({ message: "Deleted Book copy", copy });
 });
 

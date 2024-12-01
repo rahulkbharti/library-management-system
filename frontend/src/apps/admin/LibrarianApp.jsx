@@ -7,7 +7,7 @@ import GroupIcon from '@mui/icons-material/Group';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 import { useEffect, useState } from "react";
 
-// import axiosInstance from "../../axios/AxiosInstance";
+import axiosInstance from "../../axios/AxiosInstance";
 
 const menu = {
   dashboard: "/librarian/dashboard",
@@ -19,17 +19,23 @@ const menu = {
 }
 
 const LibrarianApp = () => {
-
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
-  // useEffect(()=>{
-  //    async function myFun(){
-  //     let x = await axiosInstance.get("/auth/admin/profile");
-  //         console.log(x)
-  //         setUser(x.data.user);
-  //    } 
-  //    myFun();
-  // },[])
+  useEffect(() => {
+    async function myFun() {
+      let x = await axiosInstance.get("/auth/admin/profile");
+      setUser(x.data.user);
+    }
+    myFun();
+  }, [])
 
+  const handleLogout = async () => {
+    let x = confirm("Do you  want to logout!");
+    if (x) {
+      await axiosInstance.get("/auth/admin/logout");
+      navigate("/librarian/login");
+    }
+  }
   return (
     <>
       <Box sx={{ boxShadow: "0 0 10px black" }}>
@@ -47,12 +53,11 @@ const LibrarianApp = () => {
                   </Link>
                 </>
               ) : (
-                <IconButton sx={{ p: 0 }}>
+                <IconButton sx={{ p: 0 }} onClick={handleLogout}>
                   <Typography>
                     {user?.full_name}
                   </Typography>
                   <Avatar alt={user?.user?.full_name} src="logo192.png" />
-
                 </IconButton>
               )}
 

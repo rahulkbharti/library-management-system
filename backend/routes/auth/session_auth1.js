@@ -50,7 +50,6 @@ router.post('/login', async (req, res) => {
     const user = users.find((u) => u.username === username);
 
     if (user) {
-        console.log(chalk.red(user.password));
         const passwordMatch = await bcrypt.compare(password, user.hashedPassword);
         if (passwordMatch) {
             // Authentication successful

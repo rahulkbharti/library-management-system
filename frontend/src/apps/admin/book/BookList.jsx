@@ -14,7 +14,6 @@ const BookList = () => {
   const BookList = async () => {
     try {
       let x = await axiosInstance.get("/book/getAllBooks");
-      console.log(x.data.list);
       setBooks(x.data.list);
     } catch (error) {
       console.error('Error fetching student data:', error);
@@ -41,7 +40,7 @@ const BookList = () => {
 
   return (
     <>
-      <table border="1" width={"600px"}>
+      <table border="1" width="100%">
         <thead>
           <tr>
             <th>Book ID</th>

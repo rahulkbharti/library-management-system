@@ -11,9 +11,7 @@ class BookCategoryModel {
   async addBookCategory(name) {
     try {
       const result = await this.query('INSERT INTO categories (name) VALUES (?)', [name]);
-      console.log(result);
       const [category] = await this.query('SELECT * FROM categories WHERE category_id = ?', [result.insertId]);
-      // console.log(category);
       return { category, status: 'success' };
     } catch (error) {
       console.error('Error creating Book Category:', error.message);

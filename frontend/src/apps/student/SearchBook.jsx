@@ -16,7 +16,6 @@ const SearchBookByTitle = () => {
     try {
       // Assuming there's a function to search for a book by book_id
       const response = await axiosInstance.post('/book/getBookByTitle', { "book_title": bookId });
-      console.log(response)
       // Check if a book is found
       if (response.data && response.data.books) {
         setBooks(response.data.books);
@@ -48,16 +47,22 @@ const SearchBookByTitle = () => {
       <Button onClick={handleSearch} type="submit" variant="contained" color="primary" size="small">
         Seach
       </Button>
-    
+
       {error && <div style={{ color: 'red' }}>{error}</div>}
 
-      <ul>
-        {books && books.map((book) => (
-          <li key={book.book_id}>
-            <b>{book.title}</b> | author: <i>{book.author}</i> | category: <u>{book.category}</u>
-          </li>
-        ))}
-      </ul>
+      {books ? (
+        <ul>
+          {books.map((book) => (
+            <li key={book.book_id}>
+              <b>{book.title}</b> | author: <i>{book.author}</i> | category: <u>{book.category}</u>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <h1>
+          No Book Found!
+        </h1>
+      )}
 
 
     </div>

@@ -26,7 +26,6 @@ class TransactionModel {
             await this.query('COMMIT');
 
             // Handle the results if needed
-            console.log('Transaction successful:', result1, result2);
             return result1;
         } catch (error) {
             await this.query('ROLLBACK');

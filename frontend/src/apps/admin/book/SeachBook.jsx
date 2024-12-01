@@ -14,7 +14,7 @@ const SearchBookByBookId = ({ setBook }) => {
   const handleSearch = async () => {
     try {
       // Assuming there's a function to search for a book by book_id
-      const response = await axiosInstance.get('/book/getBook', { "book_id": bookId });
+      const response = await axiosInstance.get('/book/getBook', { params: { book_id: bookId } });
 
       // Check if a book is found
       if (response.data && response.data.book) {
@@ -26,7 +26,7 @@ const SearchBookByBookId = ({ setBook }) => {
       }
     } catch (error) {
       console.error('Error searching for book:', error);
-      setBook(null);
+      // setBook(null);
       setError('Error searching for book');
     }
   };
@@ -45,7 +45,7 @@ const SearchBookByBookId = ({ setBook }) => {
       </div>
 
       <button onClick={handleSearch}>Search</button>
-
+      {book && book.length == 0 && <div style={{ color: 'red' }}>Book not found</div>}
       {error && <div style={{ color: 'red' }}>{error}</div>}
 
     </div>

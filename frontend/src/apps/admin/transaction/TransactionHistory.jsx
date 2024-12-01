@@ -12,7 +12,6 @@ const TransactionHistory = () => {
   useEffect(() => {
     async function myFn() {
       let x = await axiosInstance.get("/transaction/getAllTransactions")
-      console.log(x.data.list);
       setTransaction(x.data.list);
     }
     myFn();
@@ -33,7 +32,7 @@ const TransactionHistory = () => {
         </Stack>
       </Stack>
       <hr />
-      <table border="1" width="600px">
+      <table border="1" width="100%">
         <thead>
           <tr>
             <th>ID</th>

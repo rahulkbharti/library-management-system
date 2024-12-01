@@ -37,7 +37,6 @@ router.post('/login', async (req, res) => {
     const user = await userModel.getUserByUserName(username);
 
     if (user) {
-        console.log(chalk.red(user.password));
         const passwordMatch = await bcrypt.compare(password, user.hashed_password);
         if (passwordMatch) {
             // Authentication successful

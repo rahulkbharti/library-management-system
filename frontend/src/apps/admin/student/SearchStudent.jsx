@@ -14,7 +14,7 @@ const SearchStudentByRollNumber = ({ setStudent }) => {
   const handleSearch = async () => {
     try {
       // Assuming there's a function to search for a student by roll number
-      const response = await axiosInstance.get('/auth/admin/getStudent', { "roll_number": rollNumber });
+      const response = await axiosInstance.get('/auth/admin/getStudent', { params: { "roll_number": rollNumber } });
       //console.log(response);
       // Check if a student is found
       if (response.data && response.data.student) {

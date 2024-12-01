@@ -10,9 +10,7 @@ class StudentModel {
   async createUser(roll_number, full_name, email, username, hashed_password, branch, year, address) {
     try {
       const result = await this.query('INSERT INTO students (roll_number, full_name, email, username, hashed_password, branch, year, address) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', [roll_number, full_name, email, username, hashed_password, branch, year, address]);
-      console.log(result);
       const [user] = await this.query('SELECT * FROM students WHERE student_id = ?', [result.insertId]);
-
       return { user, status: 200 };
     } catch (error) {
       console.error('Error creating student account:', error.message);
@@ -23,7 +21,6 @@ class StudentModel {
   async getUserByUserName(username) {
     try {
       const [user] = await this.query('SELECT * FROM students WHERE username = ?', [username]);
-      console.log(user);
       return user;
     } catch (error) {
       console.error('Error fetching student account:', error.message);
@@ -34,7 +31,6 @@ class StudentModel {
   async getStudent(roll_number) {
     try {
       const [user] = await this.query('SELECT * FROM students WHERE roll_number = ?', [roll_number]);
-      console.log(user);
       return user;
     } catch (error) {
       console.error('Error fetching student account:', error.message);
