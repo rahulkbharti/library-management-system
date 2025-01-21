@@ -32,12 +32,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.json());
 
-// Middleware for logging request time
-app.use((req, res, next) => {
-    console.log(chalk.red(`Request [${req.method}] :`), chalk.yellow(new Date()));
-    console.log(chalk.red('User Agent:'), chalk.yellow(req.get('user-agent')));
-    next();
-});
+// // Middleware for logging request time
+// app.use((req, res, next) => {
+//     // console.log(chalk.red(`Request [${req.method}] :`), chalk.yellow(new Date()));
+//     // console.log(chalk.red('User Agent:'), chalk.yellow(req.get('user-agent')));
+//     console.log("--------------------------------------------------");
+//     console.log(chalk.red('Request Time:'), chalk.yellow(new Date()));
+//     console.log(chalk.red('Request URL:'), chalk.yellow(req.originalUrl));
+//     console.log(chalk.red('Request Type:'), chalk.yellow(req.method));
+//     console.log(chalk.red('Request IP:'), chalk.yellow(req.ip));
+//     console.log(chalk.red('Session Data:'), chalk.yellow(req.session));
+//     console.log("------------------------------------------------");
+//     next();
+// });
 
 app.use(express.static('public'));
 app.get('/', (req, res) => {
