@@ -3,11 +3,8 @@ import db from './config/db.js';
 import session from 'express-session';
 import MySQLStore from 'express-mysql-session';
 import chalk from 'chalk';
-import auth from './routes/auth/auth.js';
-// import auth1 from './routes/auth/session_auth';
 
-import book from './routes/book/book.js';
-import transaction from './routes/transaction/transaction.js';
+import mainRoutes from "./routes/mainRoutes.js";
 
 const router = express.Router();
 const sessionStore = MySQLStore(session); // Initialize MySQLStore with session
@@ -39,11 +36,6 @@ router.use((req, res, next) => {
     console.log("------------------------------------------------");
     next();
 });
-
-router.use('/auth', auth);
-router.use('/book', book);
-router.use('/transaction', transaction);
-
-// router.use('/auth1', auth1);
+router.use("/", mainRoutes);
 
 export default router;

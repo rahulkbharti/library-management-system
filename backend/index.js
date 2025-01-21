@@ -4,7 +4,6 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import mainRouter from './routes.js';
-import apiV2 from "./apis/index.js";
 const app = express();
 const PORT = process.env.PORT || 8001;
 const ALLOWED_LIST = ['http://localhost:3001', 'http://localhost:3000', "http://localhost:5173"];
@@ -51,9 +50,6 @@ app.get('/', (req, res) => {
     res.send('Welcome to the Library Management System');
 });
 app.use('/', mainRouter);
-app.use('/api/v2', apiV2);
-
-
 // Start the server
 app.listen(PORT, () => {
     console.log(chalk.green('Server listening on PORT'), chalk.cyan(PORT));
