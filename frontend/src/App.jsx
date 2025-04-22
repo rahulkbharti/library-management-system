@@ -6,7 +6,7 @@ function App() {
    return (
       <BrowserRouter>
          <Routes>
-            <Route path="/" element={<DashboardLayoutBasic />} />
+            {/* <Route path="/" element={<AdminRoutes />} /> */}
             <Route path='/admin/*' element={<AdminRoutes />}></Route>
             {/* <Route path="/admin" element={<DashboardLayoutBasic />} />
             <Route path="/" element={<UserList />} />

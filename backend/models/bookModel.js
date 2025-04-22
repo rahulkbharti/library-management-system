@@ -24,7 +24,7 @@ class BooksModel {
     async getAllBooks() {
         try {
             const query = `
-        SELECT b.book_id, b.title, b.author, b.publisher, b.isbn, b.language, d.name AS department_name,
+        SELECT b.book_id, b.title, b.author, b.publisher, b.isbn, b.language, d.department_id AS department_id,
                b.created_at, b.updated_at
         FROM Books b
         LEFT JOIN Departments d ON b.department_id = d.department_id
