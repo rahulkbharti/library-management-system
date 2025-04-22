@@ -4,7 +4,7 @@ import session from 'express-session';
 import MySQLStore from 'express-mysql-session';
 import chalk from 'chalk';
 
-import mainRoutes from "./routes/mainRoutes.js";
+import mainRoutes from "./routes/index.js";
 
 const router = express.Router();
 const sessionStore = MySQLStore(session); // Initialize MySQLStore with session
@@ -21,6 +21,7 @@ router.use(session({
     resave: false,
     saveUninitialized: true,
     store,
+    cookie: { maxAge: 24 * 60 * 60 * 1000 }, // 1 day
 }));
 
 // Middleware for logging request time

@@ -7,13 +7,13 @@ class UserModel {
         this.query = util.promisify(database.query).bind(database);
     }
 
-    async createUser({ name, email, password, role, department }) {
+    async createUser({ name, email, hashedPassword, role, department }) {
         try {
             const query = `
         INSERT INTO Users (name, email, password, role, department)
         VALUES (?, ?, ?, ?, ?)
       `;
-            const params = [name, email, password, role, department];
+            const params = [name, email, hashedPassword, role, department];
             const result = await this.query(query, params);
             return { success: true, userId: result.insertId };
         } catch (error) {

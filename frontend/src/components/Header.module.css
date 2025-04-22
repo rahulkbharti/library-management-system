@@ -1,0 +1,13 @@
+.header {
+  display: flex;
+  direction: row;
+}
+.menu {
+  display: flex;
+}
+.menu a {
+  padding: 10px;
+}
+.menu a:hover {
+  background-color: aqua;
+}

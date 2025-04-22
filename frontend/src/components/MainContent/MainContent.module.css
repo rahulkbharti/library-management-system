@@ -1,0 +1,6 @@
+.mainContent {
+  flex: 1;
+  padding: 20px;
+  background: #ecf0f1;
+  min-height: 100vh;
+}

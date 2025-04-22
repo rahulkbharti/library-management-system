@@ -6,5 +6,4 @@ router.get('/', UserController.getAllUsers);
 router.get('/:email', UserController.getUserByEmail);
 router.put('/:userId', UserController.updateUser);
 router.delete('/:userId', UserController.deleteUser);
-
 export default router;
